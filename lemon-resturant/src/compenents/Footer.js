@@ -1,9 +1,10 @@
 import logo from '../assets/logo.jpg'
+import './Nav.css'
 function Footer(){
     return(
         <footer>
-            <img src = {logo} alt = "log resturant " height={200} width={200}/>
-            <ul>
+            <img src = {logo} alt = "log resturant " height={100} width={200}/>
+            <ul className='footer'>
                 <h1>Navigation</h1>
                 <li><a>Home</a></li>
                 <li><a>About</a></li>
