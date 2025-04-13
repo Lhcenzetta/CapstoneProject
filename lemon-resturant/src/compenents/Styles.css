@@ -473,4 +473,24 @@
       justify-content: center;
     }
   }
+  .confirmation-message {
+    background-color: #f0fff4;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #c6f6d5;
+    margin-top: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
   

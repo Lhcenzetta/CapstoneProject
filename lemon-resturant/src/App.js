@@ -6,7 +6,8 @@ import { Route,Routes } from 'react-router-dom';
 import Home from './compenents/Home'
 import Dev from './compenents/Dev';
 import Login from './compenents/Login';
-import Resevation from './compenents/Resevation';
+import BookingForm from './compenents/BookingForm';
+import Sinup from './compenents/Sinup';
 import './App.css';
 function App() {
   return (
@@ -20,8 +21,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/Login" element={<Login/>} />
         <Route path="/DevlopedBy" element={<Dev/>} />
-        <Route path="/Resevation" element={<Resevation />} />
-      </Routes>
+        <Route path="/BookingForm" element={<BookingForm />} />
+        <Route path="/Sinup" element={<Sinup/>} />
+        </Routes>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 const Login = () => {
   return (
     <section className="login-section">
@@ -15,7 +16,8 @@ const Login = () => {
 
           <div className="login-extra">
             <a href="#">Forgot password?</a>
-            <p>Don't have an account? <a href="#">Sign up</a></p>
+            <p>Don't have an account?<Link to="/Sinup">Sign up</Link>
+            </p>
           </div>
         </form>
       </div>
