@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState("");
-  const [checkSubmit, setCheckSubmit] = useState(false);
-  const [submittedData, setSubmittedData] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCheckSubmit(true);
-    setSubmittedData({ name, email, date, time, guests });
+    const formData = { name, email, date, time, guests }; 
+    submitForm(formData);
     cleanForm();
   };
 
@@ -43,9 +41,9 @@ function BookingForm({ availableTimes, dispatch }) {
             <label htmlFor="name">Full Name</label>
             <input
               type="text"
-              onChange={(e) => setName(e.target.value)}
-              value={name}
               id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="e.g. John Doe"
               required
             />
@@ -85,7 +83,9 @@ function BookingForm({ availableTimes, dispatch }) {
               >
                 <option value="">Select time</option>
                 {availableTimes.map((t) => (
-                  <option key={t} value={t}>{t}</option>
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
                 ))}
               </select>
             </div>
@@ -109,23 +109,6 @@ function BookingForm({ availableTimes, dispatch }) {
             Reserve Table
           </button>
         </form>
-
-        {checkSubmit && submittedData && (
-          <div className="confirmation-message fade-in">
-            <h2>🎉 Thank you for your reservation!</h2>
-            <p>Welcome, Mr./Ms. <strong>{submittedData.name}</strong> 👋</p>
-            <p>Your booking details are as follows:</p>
-            <ul>
-              <li><strong>Email:</strong> {submittedData.email}</li>
-              <li><strong>Date:</strong> {submittedData.date}</li>
-              <li><strong>Time:</strong> {submittedData.time}</li>
-              <li><strong>Guests:</strong> {submittedData.guests}</li>
-            </ul>
-            <p style={{ marginTop: "10px", color: "green" }}>
-              We can't wait to serve you! 🧑‍🍳🍋
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );

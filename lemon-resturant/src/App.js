@@ -9,6 +9,8 @@ import Login from './compenents/Login';
 // import BookingForm from './compenents/BookingForm';
 import Main from './compenents/Main';
 import Sinup from './compenents/Sinup';
+import ConfirmedBooking from './compenents/ConfirmedBooking';
+
 import './App.css';
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
         {/* <Route path="/BookingForm" element={<BookingForm />} /> */}
         <Route path="/Main" element={<Main />} />
         <Route path="/Sinup" element={<Sinup/>} />
+        <Route path="/confirmed" element={<ConfirmedBooking />} />
+
         </Routes>
     </>
   );

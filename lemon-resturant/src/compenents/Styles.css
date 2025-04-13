@@ -76,6 +76,128 @@
     background-color: #f4c430;
     color: #004d40;
 }
+/* Home.css */
+.Home {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-content {
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 30px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+/* Menu Modal */
+/* Home.css */
+.Home {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-content {
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #FF6347; /* Tomato color */
+  color: white;
+  padding: 18px 36px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #FF4500; /* Darker shade of Tomato */
+}
+
+/* Menu Modal */
+.menu-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.menu-modal-content {
+  background-color: #fff7e6; /* Light yellow background */
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+}
+
+.close-button {
+  background-color: #FF6347;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #FF4500;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.menu-item {
+  margin-bottom: 25px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.menu-item h3 {
+  font-size: 1.6rem;
+  color: #FF6347; /* Tomato color */
+}
+
+.menu-item p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.menu-item span {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #333;
+}
 
 
 /*THIS IS THE ABOUT STYLING */
@@ -493,4 +615,51 @@
       opacity: 1;
     }
   }
-  
+  /* src/components/ConfirmedBooking.css */
+
+.confirmation-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* 80% of the viewport height */
+  background-color: #f7f7f7; /* Light background color */
+  padding: 20px;
+}
+
+.confirmation-container {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #4CAF50; /* Green color for the booking confirmation */
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

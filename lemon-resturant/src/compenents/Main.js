@@ -1,31 +1,46 @@
-// Main.js
 import React, { useReducer } from "react";
 import BookingForm from "./BookingForm";
+import { useNavigate } from "react-router-dom";
+import { fetchAPI, submitAPI } from "./api"; // adjust path if needed
 
-const initializeTimes = () => {
-  return ["17:00", "18:00", "19:00", "20:00", "21:00"];
+// Reducer for managing availableTimes
+const timesReducer = (state, action) => {
+  switch (action.type) {
+    case "UPDATE_DATE":
+      return fetchAPI(action.payload); // fetchAPI returns available times
+    default:
+      return state;
+  }
 };
 
-const updateTimes = (state, action) => {
-  // You can update this to fetch different times per date later
-  if (action.type === "UPDATE_DATE") {
-    const selectedDate = action.payload;
-    // For now, return static times
-    return ["17:00", "18:00", "19:00", "20:00", "21:00"];
-  }
-  return state;
+const initializeTimes = () => {
+  const today = new Date().toISOString().split("T")[0];
+  return fetchAPI(today); // initial times for today
 };
 
 function Main() {
-  const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
+  const [availableTimes, dispatch] = useReducer(timesReducer, [], initializeTimes);
+  const navigate = useNavigate();
+
+  // Called when the form is submitted
+  const submitForm = (formData) => {
+    const success = submitAPI(formData);
+    if (success) {
+      navigate("/confirmed", { state: formData }); // pass data to confirmation page
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  };
 
   return (
     <main>
-      <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+      <BookingForm
+        availableTimes={availableTimes}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
     </main>
   );
 }
 
 export default Main;
-export { initializeTimes, updateTimes };
-
