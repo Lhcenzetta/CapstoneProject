@@ -1,7 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-
-function BookingForm() {
+function BookingForm({ availableTimes, dispatch }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
@@ -10,17 +9,10 @@ function BookingForm() {
   const [checkSubmit, setCheckSubmit] = useState(false);
   const [submittedData, setSubmittedData] = useState(null);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setCheckSubmit(true);
-    setSubmittedData({
-      name,
-      email,
-      date,
-      time,
-      guests,
-    });
+    setSubmittedData({ name, email, date, time, guests });
     cleanForm();
   };
 
@@ -30,6 +22,12 @@ function BookingForm() {
     setDate("");
     setTime("");
     setGuests("");
+  };
+
+  const handleDateChange = (e) => {
+    const newDate = e.target.value;
+    setDate(newDate);
+    dispatch({ type: "UPDATE_DATE", payload: newDate });
   };
 
   return (
@@ -72,20 +70,24 @@ function BookingForm() {
                 type="date"
                 id="date"
                 value={date}
-                onChange={(e) => setDate(e.target.value)}
+                onChange={handleDateChange}
                 required
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="time">Time</label>
-              <input
-                type="time"
+              <select
                 id="time"
                 value={time}
                 onChange={(e) => setTime(e.target.value)}
                 required
-              />
+              >
+                <option value="">Select time</option>
+                {availableTimes.map((t) => (
+                  <option key={t} value={t}>{t}</option>
+                ))}
+              </select>
             </div>
           </div>
 
@@ -108,22 +110,22 @@ function BookingForm() {
           </button>
         </form>
 
-        {/* Confirmation Message with animation */}
         {checkSubmit && submittedData && (
-  <div className="confirmation-message fade-in">
-    <h2>🎉 Thank you for your reservation!</h2>
-    <p>Welcome, Mr./Ms. <strong>{submittedData.name}</strong> 👋</p>
-    <p>Your booking details are as follows:</p>
-    <ul>
-      <li><strong>Email:</strong> {submittedData.email}</li>
-      <li><strong>Date:</strong> {submittedData.date}</li>
-      <li><strong>Time:</strong> {submittedData.time}</li>
-      <li><strong>Guests:</strong> {submittedData.guests}</li>
-    </ul>
-    <p style={{ marginTop: "10px", color: "green" }}>We can't wait to serve you! 🧑‍🍳🍋</p>
-  </div>
-)}
-
+          <div className="confirmation-message fade-in">
+            <h2>🎉 Thank you for your reservation!</h2>
+            <p>Welcome, Mr./Ms. <strong>{submittedData.name}</strong> 👋</p>
+            <p>Your booking details are as follows:</p>
+            <ul>
+              <li><strong>Email:</strong> {submittedData.email}</li>
+              <li><strong>Date:</strong> {submittedData.date}</li>
+              <li><strong>Time:</strong> {submittedData.time}</li>
+              <li><strong>Guests:</strong> {submittedData.guests}</li>
+            </ul>
+            <p style={{ marginTop: "10px", color: "green" }}>
+              We can't wait to serve you! 🧑‍🍳🍋
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
