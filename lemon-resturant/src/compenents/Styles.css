@@ -2,42 +2,98 @@
 
 
 /*THIS IS THE HEADER STYLEING */
+/* Reset default styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Header Styling */
+.header-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  margin-left: 5%;
+  
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+/* Navigation Styles */
+.navbar-container {
+  /* background-color: #333; */
+  position: relative;
+  margin-right: 5%;
+  align-items: center;
+  margin-top: 2%;
+}
+
 .navbar {
-    height: 15vh;
-    background-color: #004d40; /* dark olive green */
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding: 0 5%;
-    gap: 2rem;
-    list-style: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0.5rem;
 }
 
 .navbar li {
-    list-style-type: none;
+  margin: 0 1rem;
 }
 
 .navbar li a {
-    color: #fefae0; /* soft white/yellow */
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1rem;
-    padding: 8px 16px;
-    border-radius: 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .navbar li a:hover {
-    background-color: #f4c430; /* lemon yellow */
-    color: #004d40;
+  color: #f4ce14;
 }
 
-
-.logo{
-    margin-left: 5% ;
+/* Responsive Toggle Styles */
+.menu-toggle {
+  display: none;
 }
 
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: white;
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .navbar {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    padding: 1rem;
+  }
+
+  .menu-toggle:checked ~ .navbar {
+    display: flex;
+  }
+
+  .navbar li {
+    margin: 0.5rem 0;
+  }
+}
 
 /*THIS IS THE HOME STYLEING */
 .Home {

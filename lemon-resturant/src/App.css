@@ -2,7 +2,7 @@
 padding: 0;
 margin: 0;
 }
-.Header{
+/* .Header{
     padding: 0;
     margin: 0;
     display: flex;
@@ -10,9 +10,12 @@ margin: 0;
     height: auto;
     width: 100%;
     background-color: #004d40; /* dark green */
-}
 
-
+ .Header{
+  display: flex;
+  justify-content: space-between;
+  background-color: #004d40;
+ }
 /* this is sinup section */
 .signup-section {
     display: flex;
