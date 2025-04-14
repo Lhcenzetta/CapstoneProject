@@ -12,9 +12,6 @@
     gap: 2rem;
     list-style: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
 }
 
 .navbar li {
@@ -662,4 +659,64 @@ button {
 
 button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+
+/* footer styling */
+footer {
+  background-color:  #004d40;
+  color: white;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+footer img {
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  list-style: none;
+  padding: 0;
+}
+
+.footer h1 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #f4ce14;
+}
+
+.footer li {
+  margin-bottom: 8px;
+}
+
+.footer li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.footer li a:hover {
+  color: #f4ce14;
+}
+
+.footer p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer {
+    margin-top: 20px;
+  }
 }

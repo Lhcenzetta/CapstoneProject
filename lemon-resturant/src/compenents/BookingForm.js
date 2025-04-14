@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [name, setName] = useState("");
@@ -6,10 +6,26 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [guests, setGuests] = useState("");
+  const [formValid, setFormValid] = useState(false);
+  const [checkSubmit, setCheckSubmit] = useState(false);
+  const [submittedData, setSubmittedData] = useState(null);
+
+  // Validate form whenever inputs change
+  useEffect(() => {
+    const isValid =
+      name.trim().length >= 2 &&
+      email.includes("@") &&
+      date &&
+      time &&
+      guests >= 1 && guests <= 20;
+    setFormValid(isValid);
+  }, [name, email, date, time, guests]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { name, email, date, time, guests }; 
+    setCheckSubmit(true);
+    const formData = { name, email, date, time, guests };
+    setSubmittedData(formData);
     submitForm(formData);
     cleanForm();
   };
@@ -36,7 +52,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
           We look forward to serving you at Little Lemon!
         </p>
 
-        <form onSubmit={handleSubmit} className="reservation-form">
+        <form onSubmit={handleSubmit} className="reservation-form" noValidate>
           <div className="form-group">
             <label htmlFor="name">Full Name</label>
             <input
@@ -46,6 +62,7 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
               onChange={(e) => setName(e.target.value)}
               placeholder="e.g. John Doe"
               required
+              minLength={2}
             />
           </div>
 
@@ -105,10 +122,41 @@ function BookingForm({ availableTimes, dispatch, submitForm }) {
             />
           </div>
 
-          <button type="submit" className="reservation-btn">
+          <button
+            type="submit"
+            className="reservation-btn"
+            disabled={!formValid}
+          >
             Reserve Table
           </button>
         </form>
+
+        {checkSubmit && submittedData && (
+          <div className="confirmation-message fade-in">
+            <h2>🎉 Thank you for your reservation!</h2>
+            <p>
+              Welcome, Mr./Ms. <strong>{submittedData.name}</strong> 👋
+            </p>
+            <p>Your booking details are as follows:</p>
+            <ul>
+              <li>
+                <strong>Email:</strong> {submittedData.email}
+              </li>
+              <li>
+                <strong>Date:</strong> {submittedData.date}
+              </li>
+              <li>
+                <strong>Time:</strong> {submittedData.time}
+              </li>
+              <li>
+                <strong>Guests:</strong> {submittedData.guests}
+              </li>
+            </ul>
+            <p style={{ marginTop: "10px", color: "green" }}>
+              We can't wait to serve you! 🧑‍🍳🍋
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

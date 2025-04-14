@@ -1,5 +1,5 @@
 import logo from '../assets/logo.jpg'
-import './Nav.css'
+// import './Nav.css'
 function Footer(){
     return(
         <footer>

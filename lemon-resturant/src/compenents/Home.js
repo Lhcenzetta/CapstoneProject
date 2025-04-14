@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //import './Home.css';  Add styling for modal and content
-
+import Footer from "./Footer";
 function Home() {
   const [showMenu, setShowMenu] = useState(false); // state to toggle menu visibility
 
@@ -19,6 +19,7 @@ function Home() {
   };
 
   return (
+    <>
     <div className="Home">
       <div className="home-content">
         <h1>Welcome to Little Lemon</h1>
@@ -47,6 +48,8 @@ function Home() {
         </div>
       )}
     </div>
+    <Footer/>
+    </>
   );
 }
 

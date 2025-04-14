@@ -1,17 +1,19 @@
-import { initializeTimes, updateTimes } from "./Main";
+import { updateTimes } from "./Main";
+import { fetchAPI } from "./api";
 
-describe("initializeTimes", () => {
-  test("returns default times", () => {
-    const times = initializeTimes();
-    expect(times).toEqual(["17:00", "18:00", "19:00", "20:00", "21:00"]);
-  });
-});
+jest.mock("./api", () => ({
+  fetchAPI: jest.fn(),
+}));
 
 describe("updateTimes", () => {
-  test("returns updated times regardless of date", () => {
-    const state = ["17:00", "18:00"];
-    const action = { type: "UPDATE_DATE", payload: "2025-04-14" };
-    const result = updateTimes(state, action);
-    expect(result).toEqual(["17:00", "18:00", "19:00", "20:00", "21:00"]);
+  it("should update times when the date is changed", () => {
+    // Set up mock return value
+    fetchAPI.mockReturnValue(["17:00", "18:00", "19:00"]);
+
+    const action = { type: "UPDATE_DATE", payload: "2025-04-15" };
+    const newState = updateTimes([], action); // Call the reducer function
+
+    expect(fetchAPI).toHaveBeenCalledWith(new Date(action.payload)); // Check if fetchAPI is called with correct date
+    expect(newState).toEqual(["17:00", "18:00", "19:00"]); // Assert that the returned state is correct
   });
 });
